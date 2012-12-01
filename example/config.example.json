@@ -1,0 +1,12 @@
+{
+    "comment": "Sample config file for stanford-corenlp-node",
+    
+    "name": "Stanford CoreNLP",
+    "comment": "Supply a path to the NLP library (where the corenlp jars are).  The host and port will be used to start a web services server.", 
+    "path": "../node_modules/stanford-corenlp-node/src/corenlp-server.sh",
+    "nlpLibDir": ".../packages/stanford-core-nlp/stanford-corenlp-2012-07-09",
+    "host": "localhost",
+    "port": "9900",
+    "propsPath": "./StanfordCoreNLP.properties",
+    "outputFormat": "json"
+}
