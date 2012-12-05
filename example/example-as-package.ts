@@ -4,16 +4,17 @@
  *    >
  *    > cd my_projects_dir
  *    > git clone git@github.com:mhewett/stanford-corenlp-node-example.git
+ *    > cd stanford-corenlp-node-example
  *    > npm install
  *    >
- *    > cd stanford-corenlp-node-example/example
+ *    > cd example
  *    > cp StanfordCoreNLP.example.properties StanfordCoreNLP.properties
  *    > cp config.example.json config.json
  *    >
- *    > [ edit config.json; ensure that "path", "nlpLibDir", and "propsPath" are set correctly]
- *    > [ edit StanfordCoreNLP.properties; ensure that the path to the NER dictionary is correct ]
+ *    > #[ edit config.json; ensure that "path", "nlpLibDir", and "propsPath" are set correctly   ]
+ *    > #[ edit StanfordCoreNLP.properties; ensure that the path to the NER dictionary is correct ]
  *    >
- *    > # finally we are ready to run!
+ *    > # We are ready to run!
  *    > node example-as-package ./config.json
  *    >
  * 
