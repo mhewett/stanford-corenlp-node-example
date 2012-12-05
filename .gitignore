@@ -13,3 +13,5 @@ logs
 results
 
 npm-debug.log
+example/StanfordCoreNLP.properties
+example/config.json

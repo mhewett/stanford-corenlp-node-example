@@ -1,16 +1,39 @@
-/*
- * This program tests the StanfordCoreNLP node wrapper.
+/* *
+ * This program tests the stanford-corenlp-node package.
+ * Usage:
+ *    >
+ *    > cd my_projects_dir
+ *    > git clone git@github.com:mhewett/stanford-corenlp-node-example.git
+ *    > npm install
+ *    >
+ *    > cd stanford-corenlp-node-example/example
+ *    > cp StanfordCoreNLP.example.properties StanfordCoreNLP.properties
+ *    > cp config.example.json config.json
+ *    >
+ *    > [ edit config.json; ensure that "path", "nlpLibDir", and "propsPath" are set correctly]
+ *    > [ edit StanfordCoreNLP.properties; ensure that the path to the NER dictionary is correct ]
+ *    >
+ *    > # finally we are ready to run!
+ *    > node example-as-package ./config.json
+ *    >
+ * 
+ * Mike Hewett
+ * Dec 2012
+ * mike@hewettresearch.com 
  */
+
+// These are required for TypeScript
 declare var require, process;
+
+// Third-party Node.js packages
 var events = require("minpubsub/minpubsub");
 var nlplib = require("stanford-corenlp-node");
 
-// Events 
+// Event declarations
 var SERVER_AVAILABLE = "Server started";
 
 // Create an instance of the server, passing in the config file.
 var nlpServer = new nlplib.StanfordCoreNLP.Server(process.argv[2]);
-console.log("NLP server status: ", nlpServer.getStatus().getState());
 
 // Start the server.  This is an asynchronous call.
 // The callback will be run when the NLP library is ready (~20 seconds).
@@ -34,7 +57,10 @@ var testNLP = function() {
   switch (counter) {
     case 1 : testString = "Bill Clinton was president from 1992 to 2000.  He is not the president any more."; break;
     case 2 : testString = "Santa Claus is coming to town."; break;
-    case 3 : nlpServer.stop();
+    case 3 : console.log("NLP server status: ", nlpServer.getStatus().getState());
+             events.publish(SERVER_AVAILABLE); 
+             break;
+    case 4 : nlpServer.stop(); break;
   }
 
   // Process the string using the NLP library and print the result.
@@ -43,10 +69,10 @@ var testNLP = function() {
     nlpServer.process(testString,
       function(result) {
         console.log(JSON.stringify(JSON.parse(result), null, "  "));
-        events.publish(SERVER_AVAILABLE, testNLP);
+        events.publish(SERVER_AVAILABLE);
       });
   }
 }
 
-//Start the test loop by subscribing to the event.
+// Ready the loop by subscribing to the event.
 events.subscribe(SERVER_AVAILABLE, testNLP);

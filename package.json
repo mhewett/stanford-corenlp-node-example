@@ -1,0 +1,21 @@
+{
+  "author": "LEM Labs, Inc",
+  "name": "stanford-corenlp-node-example",
+  "main": "./example/example-as-package",
+  "description": "Examples of using the stanford-corenlp-node package to access the Stanford CoreNLP library",
+  "version": "0.1.0",
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mhewett/stanford-corenlp-node-example"
+  },
+  "engines": {
+    "node": "~0.8.14"
+  },
+  "scripts": {},
+  "dependencies": {
+    "minpubsub": "~0.x",
+    "typescript": "~0.8",
+    "stanford-corenlp-node": "git+ssh://git@github.com:mhewett/stanford-corenlp-node"
+  }
+}
