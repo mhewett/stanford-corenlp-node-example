@@ -1,4 +1,3 @@
-
 var events = require("minpubsub/minpubsub");
 var nlplib = require("stanford-corenlp-node");
 var SERVER_AVAILABLE = "Server started";
@@ -35,3 +34,4 @@ var testNLP = function () {
     }
 };
 events.subscribe(SERVER_AVAILABLE, testNLP);
+//@ sourceMappingURL=example-as-package.js.map
